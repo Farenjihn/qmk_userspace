@@ -169,10 +169,12 @@ void leader_end_user(void) {
         tap_code16(CH_EACU);
     else if (leader_sequence_two_keys(CH_E, CH_E))
         tap_code16(CH_EGRV);
-    else if (leader_sequence_one_key(KC_A))
+    else if (leader_sequence_one_key(CH_A))
         tap_code16(CH_AGRV);
-    else if (leader_sequence_one_key(KC_U))
+    else if (leader_sequence_one_key(CH_U))
         tap_ugrv16();
+    else if (leader_sequence_one_key(CH_C))
+        tap_code16(CH_CCED);
 }
 
 bool caps_word_press_user(uint16_t keycode) {
