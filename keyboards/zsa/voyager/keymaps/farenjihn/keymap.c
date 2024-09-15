@@ -193,7 +193,6 @@ bool caps_word_press_user(uint16_t keycode) {
         case CH_A ... CH_Z:
         case CH_MINS:
             add_weak_mods(MOD_BIT(KC_LSFT));
-            return true;
         case CH_1 ... CH_0:
         case KC_BSPC:
         case KC_DEL:
