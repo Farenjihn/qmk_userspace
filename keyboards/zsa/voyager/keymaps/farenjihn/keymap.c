@@ -173,6 +173,16 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     }
 }
 
+void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch (keycode) {
+        case CH_QUOT:
+            unregister_code16((!shifted) ? CH_QUOT : CH_DQUO);
+            break;
+        default:
+            unregister_code16(keycode);
+    }
+}
+
 void leader_end_user(void) {
     if (leader_sequence_one_key(CH_E)) {
         tap_code16(CH_EACU);
