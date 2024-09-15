@@ -162,6 +162,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch (keycode) {
+        case CH_QUOT:
+            register_code16((!shifted) ? CH_QUOT : CH_DQUO);
+            break;
+        default:
+            if (shifted) add_weak_mods(MOD_BIT(KC_LSFT));
+            register_code16(keycode);
+    }
+}
+
 void leader_end_user(void) {
     if (leader_sequence_one_key(CH_E)) {
         tap_code16(CH_EACU);
