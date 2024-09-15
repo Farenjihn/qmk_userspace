@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [L_MEDIA] = LAYOUT(
         KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                          KC_NO,          QK_TT_DOWN,     QK_TT_UP,       QK_TT_RPT,      CM_TOGG,        KC_NO,
-        KC_NO,          KC_NO,          KC_VOL_MUTE,    KC_VOL_DOWN,    KC_VOL_UP,      KC_NO,                          KC_NO,          AS_DOWN,        AS_UP,          AS_RPT,         AS_TOGG,        KC_NO,
+        KC_NO,          KC_NO,          KC_VOL_MUTE,    KC_VOL_DOWN,    KC_VOL_UP,      KC_NO,                          KC_NO,          AS_DOWN,        AS_UP,          AS_RPT,         KC_NO,          KC_NO,
         KC_NO,          KC_TRACK_STOP,  KC_TRACK_PLAY,  KC_TRACK_PREV,  KC_TRACK_NEXT,  KC_NO,                          KC_NO,          KC_LED_DOWN,    KC_LED_UP,      KC_LED_TOGG,    KC_NO,          KC_NO,
         KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,
                                                                         _______,        _______,                        _______,        _______
@@ -123,11 +123,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case L_GAME:
             rgblight_sethsv_noeeprom(HS_WARM, rgb_matrix_get_val());
+            autoshift_disable();
             break;
         default:
             rgblight_sethsv_noeeprom(HS_COLD, rgb_matrix_get_val());
+            autoshift_enable();
             break;
     }
+
     return state;
 }
 
