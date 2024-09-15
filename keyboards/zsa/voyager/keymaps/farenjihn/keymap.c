@@ -162,22 +162,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-void tap_ugrv16(void) {
-    tap_code16(CH_GRV);
-    tap_code16(CH_U);
-}
-
 void leader_end_user(void) {
-    if (leader_sequence_one_key(CH_E))
+    if (leader_sequence_one_key(CH_E)) {
         tap_code16(CH_EACU);
-    else if (leader_sequence_two_keys(CH_E, CH_E))
+    } else if (leader_sequence_two_keys(CH_E, CH_E)) {
         tap_code16(CH_EGRV);
-    else if (leader_sequence_one_key(CH_A))
+    } else if (leader_sequence_one_key(CH_A)) {
         tap_code16(CH_AGRV);
-    else if (leader_sequence_one_key(CH_U))
-        tap_ugrv16();
-    else if (leader_sequence_one_key(CH_C))
+    } else if (leader_sequence_one_key(CH_U)) {
+        tap_code16(CH_GRV);
+        tap_code16(CH_U);
+    } else if (leader_sequence_one_key(CH_C)) {
         tap_code16(CH_CCED);
+    }
 }
 
 bool caps_word_press_user(uint16_t keycode) {
