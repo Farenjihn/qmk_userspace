@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [L_FN_NUM] = LAYOUT(
         KC_NO,          KC_NO,          KC_F10,         KC_F11,         KC_F12,         KC_NO,                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,
         KC_NO,          KC_NO,          KC_F7,          KC_F8,          KC_F9,          KC_NO,                          KC_NO,          KC_7,           KC_8,           KC_9,           KC_NO,          KC_NO,
-        KC_NO,          KC_NO,          KC_F4,          KC_F5,          KC_F6,          KC_NO,                          KC_NO,          KC_4,           KC_5,           KC_6,           KC_NO,          KC_NO,
+        KC_NO,          KC_NO,          KC_F4,          KC_F5,          KC_F6,          KC_NO,                          CH_DOT,         KC_4,           KC_5,           KC_6,           KC_NO,          KC_NO,
         KC_NO,          KC_NO,          KC_F1,          KC_F2,          KC_F3,          KC_NO,                          KC_0,           KC_1,           KC_2,           KC_3,           KC_NO,          KC_NO,
                                                                         _______,        _______,                        _______,        _______
     ),
@@ -201,6 +201,7 @@ void leader_end_user(void) {
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         case CH_A ... CH_Z:
+        case CH_Y:
         case CH_MINS:
             add_weak_mods(MOD_BIT(KC_LSFT));
         case CH_1 ... CH_0:
